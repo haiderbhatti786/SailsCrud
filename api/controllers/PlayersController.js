@@ -63,7 +63,6 @@ module.exports = {
         lname,
         password,
         email,
-        pid,
       });
       if (!updatedPlayer) {
         return res.status(404).json({ error: "cant find player of given pid" });
