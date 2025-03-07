@@ -19,12 +19,15 @@ module.exports.routes = {
    ***************************************************************************/
 
   "/": { view: "pages/homepage" },
-  "POST /players": "PlayersController.create",
-  "GET /list": "PlayersController.list",
-  "/delete": { view: "pages/delete" },
+  "POST /players": "PlayersController.create", //✅
+  "GET /players": "PlayersController.list", //✅
+  "/delete/:pid": { view: "pages/delete" },
   "POST /delete": "PlayersController.delete",
+  "GET /players/:pid": "PlayersController.delete", //✅
+  "DELETE /players/:pid": "PlayersController.delete", //✅
   "/update": { view: "pages/update" },
   "POST /update": "PlayersController.update",
+  "PATCH /players/:pid": "PlayersController.update", //✅
 
   /***************************************************************************
    *                                                                          *

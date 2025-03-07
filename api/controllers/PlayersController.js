@@ -30,13 +30,13 @@ module.exports = {
   // Method to delete a player
   delete: async function (req, res) {
     try {
-      const { pid } = req.allParams(); // tamam params se sirf pid ko uthae ga
-
-      if (!pid) {
+      const pid1 = req.param("pid"); // tamam params se sirf pid ko uthae ga
+      console.log(pid1);
+      if (!pid1) {
         return res.status(400).json({ error: "Player ID (pid) is required" }); //agr pid not tru yani false hai to 400 code ke sath error aye ga
       }
 
-      const delplayer = await Players.destroyOne({ pid }); // pid ke mudd se player ko delete kre ga
+      const delplayer = await Players.destroyOne({ pid: pid1 }); // pid ke mudd se player ko delete kre ga
 
       if (!delplayer) {
         return res.status(404).json({ error: "Player not found" }); // agr player false hai yani nahi hai to 404 error return krai ga
