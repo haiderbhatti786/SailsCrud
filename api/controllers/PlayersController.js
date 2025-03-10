@@ -9,9 +9,12 @@ module.exports = {
   // Method to create a new player
   create: async function (req, res) {
     try {
-      const params = req.allParams(); // request se sare params ko uthe ga
+      const params = req.body;
+      console.log(params); // request se sare params ko uthe ga
       const newPlayer = await Players.create(params).fetch(); // player ke creation tak ruke ga aur phir fetch kere ga
-      return res.status(201).json(newPlayer); // Return the new player with a 201 status code
+      return res
+        .status(201)
+        .json({ message: "user created successfully", newPlayer }); // Return the new player with a 201 status code
     } catch (err) {
       return res.status(500).json({ error: err.message }); // agr ki masla aya to error 500 return kre ga
     }
@@ -52,7 +55,7 @@ module.exports = {
   },
   update: async function (req, res) {
     try {
-      const { fname, lname, password, email, pid } = req.allParams();
+      const { fname, lname, password, email, pid } = req.body;
       if (!pid) {
         return res
           .status(400)
@@ -63,6 +66,7 @@ module.exports = {
         lname,
         password,
         email,
+        pid,
       });
       if (!updatedPlayer) {
         return res.status(404).json({ error: "cant find player of given pid" });
