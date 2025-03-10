@@ -55,7 +55,8 @@ module.exports = {
   },
   update: async function (req, res) {
     try {
-      const { fname, lname, password, email, pid } = req.body;
+      const pid = req.param("pid");
+      const { fname, lname, password, email, pid1 } = req.body;
       if (!pid) {
         return res
           .status(400)
@@ -66,7 +67,7 @@ module.exports = {
         lname,
         password,
         email,
-        pid,
+        pid1,
       });
       if (!updatedPlayer) {
         return res.status(404).json({ error: "cant find player of given pid" });
