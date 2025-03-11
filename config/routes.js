@@ -27,7 +27,7 @@ module.exports.routes = {
   "DELETE /players/:pid": "PlayersController.delete", //✅     //check  with sql   ✅
   "/update": { view: "pages/update" },
   "POST /update": "PlayersController.update",
-  "PATCH /players/:pid": "PlayersController.update", //  //check  with sql  ✅
+  "PATCH /players/:pid": "PlayersController.update",      //  //check  with sql  ✅
 
   /***************************************************************************
    *                                                                          *
