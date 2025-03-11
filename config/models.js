@@ -13,6 +13,8 @@
  * https://sailsjs.com/docs/concepts/models-and-orm/model-settings
  */
 
+const { datastores } = require("sails-mysql");
+
 module.exports.models = {
   /***************************************************************************
    *                                                                          *
@@ -94,6 +96,8 @@ module.exports.models = {
    * > https://sailsjs.com/docs/concepts/orm/model-settings#?dataEncryptionKeys  *
    *                                                                             *
    ******************************************************************************/
+
+  models: "players_sql",
 
   dataEncryptionKeys: {
     default: "EzCfay5DSNQgTHt1DBGrLeSgF7d1GQC1mgKwDaJnpwg=",
