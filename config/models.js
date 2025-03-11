@@ -97,7 +97,7 @@ module.exports.models = {
    *                                                                             *
    ******************************************************************************/
 
-  models: "players_sql",
+  // models: "players_sql",
 
   dataEncryptionKeys: {
     default: "EzCfay5DSNQgTHt1DBGrLeSgF7d1GQC1mgKwDaJnpwg=",
