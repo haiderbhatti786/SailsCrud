@@ -26,7 +26,7 @@ module.exports = {
   list: async function (req, res) {
     try {
       // const users = await Players.find(); // all players ko fetch kren tak ruka rahe ga
-      const query = "select * from Players"; // store query in variable
+      const query = "select * from Players "; // store query in variable
       let users = await sails.getDatastore().sendNativeQuery(query); // datastores ko access kre phir native sql chale
       return res.status(201).json(users.rows); // user ko 201 OK ke sath return kre ga //  age raw data access kre
     } catch (error) {
@@ -42,8 +42,8 @@ module.exports = {
       if (!pid1) {
         return res.status(400).json({ error: "Player ID (pid) is required" }); //agr pid not tru yani false hai to 400 code ke sath error aye ga
       }
-
-      const delplayer = await Players.destroyOne({ pid: pid1 }); // pid ke mudd se player ko delete kre ga
+      const delQuery = `delete from players where pid=${pid1}`;
+      const delplayer = await sails.getDatastore().sendNativeQuery(delQuery); // pid ke mudd se player ko delete kre ga
 
       if (!delplayer) {
         return res.status(404).json({ error: "Player not found" }); // agr player false hai yani nahi hai to 404 error return krai ga
