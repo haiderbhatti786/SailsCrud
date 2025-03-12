@@ -5,6 +5,8 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
+const { select } = require("sails-mysql/helpers");
+
 module.exports = {
   // Method to create a new player
   create: async function (req, res) {
@@ -23,7 +25,9 @@ module.exports = {
   // Method to list all players
   list: async function (req, res) {
     try {
-      const users = await Players.find(); // all players ko fetch kren tak ruka rahe ga
+      // const users = await Players.find(); // all players ko fetch kren tak ruka rahe ga
+      const query = "select * from Players"; // store query in variable
+      let users = await sails.getDatastore().sendNativeQuery(query); // datastores ko access kre phir native sql chale
       return res.status(201).json(users); // user ko 201 OK ke sath return kre ga
     } catch (error) {
       return res.status(500).json({ error: error.message }); // agr error hogi to  500 code ke sath return kre ga
