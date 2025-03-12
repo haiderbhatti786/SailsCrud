@@ -28,7 +28,7 @@ module.exports = {
       // const users = await Players.find(); // all players ko fetch kren tak ruka rahe ga
       const query = "select * from Players"; // store query in variable
       let users = await sails.getDatastore().sendNativeQuery(query); // datastores ko access kre phir native sql chale
-      return res.status(201).json(users); // user ko 201 OK ke sath return kre ga
+      return res.status(201).json(users.rows); // user ko 201 OK ke sath return kre ga //  age raw data access kre
     } catch (error) {
       return res.status(500).json({ error: error.message }); // agr error hogi to  500 code ke sath return kre ga
     }
